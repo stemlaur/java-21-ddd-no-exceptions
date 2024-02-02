@@ -3,6 +3,9 @@ package fr.dalkia.fr.java21.withexceptions.domain;
 import fr.dalkia.fr.java21.withexceptions.domain.api.CreateProduct;
 import fr.dalkia.fr.java21.withexceptions.domain.spi.Catalog;
 
+import java.util.Optional;
+import java.util.UUID;
+
 public class ProductService implements CreateProduct {
     private final Catalog catalog;
 
@@ -11,12 +14,12 @@ public class ProductService implements CreateProduct {
     }
 
     @Override
-    public boolean handle(String sku) {
+    public Optional<UUID> handle(String sku) {
         try {
-            this.catalog.saveProduct(new Product(sku));
-            return true;
+            UUID uuid = this.catalog.saveProduct(new Product(sku));
+            return Optional.of(uuid);
         } catch (CannotBeCreated e) {
-            return false;
+            return Optional.empty();
         }
     }
 }
