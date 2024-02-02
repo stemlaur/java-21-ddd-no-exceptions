@@ -18,10 +18,7 @@ public final class Product {
     }
 
     private static boolean validateSku(String sku) {
-        if (sku == null || sku.trim().isEmpty()) {
-            return false;
-        }
-        return true;
+        return sku != null && !sku.trim().isEmpty();
     }
 
     public String sku() {
