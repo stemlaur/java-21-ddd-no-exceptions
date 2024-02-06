@@ -21,11 +21,8 @@ public class ProductService implements CreateProduct {
     @Override
     public Optional<UUID> handle(String sku) {
         return switch (Product.create(sku)) {
-            case Error<?, ?> ignored -> empty();
-            case Ok<Product, ?>(var product) -> switch (this.catalog.saveProduct(product)) {
-                case Error<?, ?> ignored -> empty();
-                case Ok<UUID, ?>(var productId) -> Optional.of(productId);
-            };
+            case Ok(var product) -> this.catalog.saveProduct(product).toOptional();
+            case Error(var ignored) -> empty();
         };
     }
 }

@@ -7,16 +7,16 @@ import fr.dalkia.fr.java21.withoutexceptions.domain.SaveProductError;
 
 import java.util.UUID;
 
+import static fr.dalkia.fr.java21.common.Result.error;
+import static fr.dalkia.fr.java21.common.Result.ok;
+
 public class CatalogOverHttp implements Catalog {
     @Override
     public Result<UUID, SaveProductError> saveProduct(Product product) {
         try {
-            // HERE we try to perform an operation that can fail
-            return Result.ok(UUID.randomUUID());
+            return ok(UUID.randomUUID());
         } catch (RuntimeException e) {
-            // HERE WE USE A CHECKED EXCEPTION
-            // BUT THE PROBLEM IS THE SAME WITH UNCHECKED EXCEPTIONS
-            return Result.error(new SaveProductError.ConnectivityProblem());
+            return error(new SaveProductError.ConnectivityProblem());
         }
     }
 }
