@@ -1,6 +1,6 @@
 package fr.dalkia.fr.java21.withoutexceptions.domain;
 
-import fr.dalkia.fr.java21.common.Result;
+import fr.dalkia.fr.java21.common.result.Result;
 
 public final class Product {
     private final String sku;

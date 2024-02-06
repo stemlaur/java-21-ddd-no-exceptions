@@ -1,4 +1,4 @@
-package fr.dalkia.fr.java21.common;
+package fr.dalkia.fr.java21.common.result;
 
 import java.util.Optional;
 

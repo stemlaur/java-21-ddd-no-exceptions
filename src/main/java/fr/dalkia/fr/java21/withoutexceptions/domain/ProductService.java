@@ -1,7 +1,7 @@
 package fr.dalkia.fr.java21.withoutexceptions.domain;
 
-import fr.dalkia.fr.java21.common.Error;
-import fr.dalkia.fr.java21.common.Ok;
+import fr.dalkia.fr.java21.common.result.Error;
+import fr.dalkia.fr.java21.common.result.Ok;
 import fr.dalkia.fr.java21.withoutexceptions.domain.api.CreateProduct;
 import fr.dalkia.fr.java21.withoutexceptions.domain.spi.Catalog;
 
