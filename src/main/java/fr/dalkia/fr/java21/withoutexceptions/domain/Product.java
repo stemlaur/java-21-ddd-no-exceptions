@@ -1,6 +1,6 @@
 package fr.dalkia.fr.java21.withoutexceptions.domain;
 
-import fr.dalkia.fr.java21.common.Either;
+import fr.dalkia.fr.java21.common.Result;
 
 public final class Product {
     private final String sku;
@@ -9,11 +9,11 @@ public final class Product {
         this.sku = sku;
     }
 
-    public static Either<InvalidSku, Product> create(String sku) {
+    public static Result<Product, InvalidSku> create(String sku) {
         if (validateSku(sku)) {
-            return Either.left(new InvalidSku());
+            return Result.ok(new Product(sku));
         } else {
-            return Either.right(new Product(sku));
+            return Result.error(new InvalidSku());
         }
     }
 
